@@ -2,7 +2,6 @@ package com.march.brewerieslist.ui.list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.android.gms.maps.model.LatLng
 import com.march.brewerieslist.data.Breweries
 import com.march.brewerieslist.data.BreweriesDataSource
 import com.march.brewerieslist.data.BreweriesRepository
@@ -17,10 +16,12 @@ class BreweriesListViewModel @Inject constructor() : ViewModel(),
     var showProgress = MutableLiveData(false)
     var onUrlClickedCallback: ((String) -> Unit)? = null
     var onMapClickedCallback: ((Brewery) -> Unit)? = null
+    var onErrorOccurredCallback: (() -> Unit)? = null
 
     val breweries = MutableLiveData<Breweries>()
 
     fun reloadBreweries() {
+        initRepositoryCallback()
         showProgress.value = true
         breweriesRepository.getBreweries(this)
     }
@@ -36,6 +37,20 @@ class BreweriesListViewModel @Inject constructor() : ViewModel(),
     }
 
     override fun onDataNotAvailable() {
+        onErrorOccurredCallback?.invoke()
         showProgress.value = false
+    }
+
+    override fun onCleared() {
+        breweriesRepository.clear()
+        super.onCleared()
+    }
+
+    private fun initRepositoryCallback() {
+        if (breweriesRepository.onSearchRequestGotCallback == null) {
+            breweriesRepository.onSearchRequestGotCallback = {
+                showProgress.value = false
+            }
+        }
     }
 }

@@ -40,13 +40,13 @@ class WebViewFragment : BaseFragment() {
         browserWV.webViewClient = WebViewClient()
         browserWV.webChromeClient = object : WebChromeClient() {
             override fun onProgressChanged(view: WebView, progress: Int) {
-                if (progress < 100 && progressPB.visibility == ProgressBar.GONE) {
-                    progressPB.visibility = ProgressBar.VISIBLE
+                if (progress < 100 && progressPB?.visibility == ProgressBar.GONE) {
+                    progressPB?.visibility = ProgressBar.VISIBLE
                 }
 
-                progressPB.progress = progress
+                progressPB?.progress = progress
                 if (progress == 100) {
-                    progressPB.visibility = ProgressBar.GONE
+                    progressPB?.visibility = ProgressBar.GONE
                 }
             }
         }
