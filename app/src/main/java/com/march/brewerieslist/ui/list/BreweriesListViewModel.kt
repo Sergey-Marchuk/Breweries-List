@@ -2,6 +2,7 @@ package com.march.brewerieslist.ui.list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.gms.maps.model.LatLng
 import com.march.brewerieslist.data.Breweries
 import com.march.brewerieslist.data.BreweriesDataSource
 import com.march.brewerieslist.data.BreweriesRepository
@@ -15,7 +16,7 @@ class BreweriesListViewModel @Inject constructor() : ViewModel(),
     lateinit var breweriesRepository: BreweriesRepository
     var showProgress = MutableLiveData(false)
     var onUrlClickedCallback: ((String) -> Unit)? = null
-    var onMapClickedCallback: ((Pair<Float, Float>) -> Unit)? = null
+    var onMapClickedCallback: ((Brewery) -> Unit)? = null
 
     val breweries = MutableLiveData<Breweries>()
 

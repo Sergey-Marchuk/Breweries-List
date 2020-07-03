@@ -53,6 +53,11 @@ class BreweryViewHolder(
             val brewery = adapter.breweries.getItemByPosition(adapterPosition)
             brewery?.websiteUrl?.let { viewModel.onUrlClickedCallback?.invoke(it) }
         }
+
+        itemView.openMapMB.setOnClickListener {
+            val brewery = adapter.breweries.getItemByPosition(adapterPosition)
+            brewery?.let { viewModel.onMapClickedCallback?.invoke(it) }
+        }
     }
 
     fun bindBrewery(brewery: Brewery) {
