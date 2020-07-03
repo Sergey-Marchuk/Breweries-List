@@ -5,19 +5,14 @@ import com.march.brewerieslist.App
 import com.march.brewerieslist.di.modules.view_models.ViewModelModule
 import dagger.Module
 import dagger.Provides
-import javax.inject.Inject
 import javax.inject.Singleton
 
-@Module(
-    includes = [ViewModelModule::class,
-        ApiModule::class,
-        DataSourceModule::class]
-)
-class BreweriesAppModule() {
+@Module
+class BreweriesAppModule {
 
+    @Singleton
     @Provides
-    @Inject
-    fun provideContext(context: App): Context {
-        return context
+    fun provideContext(application: App): Context {
+        return application
     }
 }

@@ -3,9 +3,9 @@ package com.march.brewerieslist
 import com.march.brewerieslist.di.DaggerBreweriesListComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
-import javax.inject.Inject
+import timber.log.Timber
 
-class App @Inject constructor(): DaggerApplication() {
+class App : DaggerApplication() {
 
     companion object {
         lateinit var INSTANCE: App
@@ -14,6 +14,7 @@ class App @Inject constructor(): DaggerApplication() {
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
+        Timber.plant(Timber.DebugTree());
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {

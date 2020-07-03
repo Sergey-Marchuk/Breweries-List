@@ -1,6 +1,6 @@
 package com.march.brewerieslist.di.modules
 
-import com.march.brewerieslist.MainActivity
+import com.march.brewerieslist.ui.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

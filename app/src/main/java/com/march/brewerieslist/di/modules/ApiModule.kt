@@ -19,7 +19,9 @@ class ApiModule {
     private val BASE_URL = "https://api.openbrewerydb.org/"
 
     @Provides
-    fun breweriesApiService(retrofit: Retrofit) = retrofit.create(BreweriesApiService::class.java)
+    fun breweriesApiService(retrofit: Retrofit): BreweriesApiService {
+        return retrofit.create(BreweriesApiService::class.java)
+    }
 
     @Singleton
     @Provides

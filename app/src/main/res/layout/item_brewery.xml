@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="brewery"
+            type="com.march.brewerieslist.data.Brewery" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/brewery_item_margin"
+        android:background="@drawable/bg_brewery_item"
+        android:paddingStart="@dimen/brewery_item_horizontal_padding"
+        android:paddingEnd="@dimen/brewery_item_horizontal_padding"
+        android:paddingBottom="@dimen/brewery_item_vertical_padding">
+
+        <TextView
+            android:id="@+id/titleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iowan_old_style_bold"
+            android:textColor="@color/color_dark_grey"
+            android:textSize="@dimen/brewery_item_title_text_size"
+            android:text="@{brewery.name}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/countryTV"
+            style="@style/BreweryItemTextStyle"
+            app:breweryInfoText="@{@string/country_format(brewery.country)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleTV"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/stateTV"
+            style="@style/BreweryItemTextStyle"
+            app:breweryInfoText="@{@string/state_format(brewery.state)}"            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/countryTV"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/cityTV"
+            style="@style/BreweryItemTextStyle"
+            app:breweryInfoText="@{@string/city_format(brewery.city)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/stateTV"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/streetTV"
+            style="@style/BreweryItemTextStyle"
+            app:breweryInfoText="@{@string/street_format(brewery.street)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cityTV"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/postalCodeTV"
+            style="@style/BreweryItemTextStyle"
+            app:breweryInfoText="@{@string/postal_code_format(brewery.postalCode)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/streetTV"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/phoneTV"
+            style="@style/BreweryItemTextStyle"
+            app:breweryInfoText="@{@string/phone_format(brewery.phone)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/postalCodeTV"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/websiteTV"
+            style="@style/BreweryItemTextStyle"
+            app:breweryInfoText="@{@string/website_format(brewery.websiteUrl)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phoneTV"
+            tools:text="@tools:sample/lorem" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/openMapMB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/brewery_item_button_top_margin"
+            android:backgroundTint="@color/color_light_green"
+            android:textColor="@android:color/white"
+            android:text="@string/show_on_map"
+            android:fontFamily="@font/iowan_old_style_roman"
+            android:textAllCaps="false"
+            app:latitude="@{brewery.latitude}"
+            app:longitude="@{brewery.longitude}"
+            app:cornerRadius="@dimen/brewery_item_button_corners_radius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/websiteTV" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Brewery Item-->
+    <dimen name="brewery_item_corners_radius">24dp</dimen>
+    <dimen name="brewery_item_stroke_width">2dp</dimen>
+    <dimen name="brewery_item_title_text_size">24sp</dimen>
+    <dimen name="brewery_item_horizontal_padding">24dp</dimen>
+    <dimen name="brewery_item_vertical_padding">12dp</dimen>
+    <dimen name="brewery_item_text_size">16sp</dimen>
+    <dimen name="brewery_item_button_corners_radius">10dp</dimen>
+    <dimen name="brewery_item_button_top_margin">8dp</dimen>
+    <dimen name="brewery_item_margin">12dp</dimen>
+    <dimen name="brewery_item_button_text_size">16sp</dimen>
+
+    <!--Breweries List-->
+    <dimen name="breweries_list_title_text_size">24sp</dimen>
+    <dimen name="breweries_list_search_corners_radius">8dp</dimen>
+    <dimen name="breweries_list_search_padding">12dp</dimen>
+    <dimen name="breweries_list_search_height">40dp</dimen>
+    <dimen name="breweries_list_search_horizontal_padding">4dp</dimen>
+    <dimen name="breweries_list_leprechaun_height">280dp</dimen>
+    <dimen name="breweries_list_leprechaun_width">165dp</dimen>
+</resources>

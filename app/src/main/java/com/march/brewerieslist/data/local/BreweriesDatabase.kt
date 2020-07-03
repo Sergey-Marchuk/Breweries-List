@@ -20,9 +20,6 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.march.brewerieslist.data.Brewery
 
-/**
- * The Room Database that contains the Task table.
- */
 @Database(entities = [Brewery::class], version = 1)
 abstract class BreweriesDatabase : RoomDatabase() {
 

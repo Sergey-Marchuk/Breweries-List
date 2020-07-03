@@ -5,12 +5,32 @@ import com.march.brewerieslist.data.remote.BreweriesRemoteDataSource
 import javax.inject.Inject
 
 class BreweriesRepository @Inject constructor(
-    val breweriesLocalDataSource: BreweriesLocalDataSource,
-    val breweriesRemoteDataSource: BreweriesRemoteDataSource
+    private val breweriesLocalDataSource: BreweriesLocalDataSource,
+    private val breweriesRemoteDataSource: BreweriesRemoteDataSource
 ) : BreweriesDataSource {
 
     override fun getBreweries(callback: BreweriesDataSource.LoadBreweriesCallback) {
-//        breweriesLocalDataSource.getBreweries(callback)
-        breweriesRemoteDataSource.getBreweries(callback)
+        breweriesLocalDataSource.getBreweries(callback)
+        breweriesRemoteDataSource.getBreweries(object: BreweriesDataSource.LoadBreweriesCallback {
+            override fun onBreweriesLoaded(breweries: List<Brewery>) {
+                breweriesLocalDataSource.insertBreweries(breweries)
+            }
+
+            override fun onDataNotAvailable() {
+                callback.onDataNotAvailable()
+            }
+        })
+    }
+
+    fun searchBreweries(query: String?, callback: BreweriesDataSource.LoadBreweriesCallback) {
+        breweriesRemoteDataSource.searchBreweries(query, object: BreweriesDataSource.LoadBreweriesCallback {
+            override fun onBreweriesLoaded(breweries: List<Brewery>) {
+                breweriesLocalDataSource.insertBreweries(breweries)
+            }
+
+            override fun onDataNotAvailable() {
+                callback.onDataNotAvailable()
+            }
+        })
     }
 }

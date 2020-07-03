@@ -10,37 +10,40 @@ import com.march.brewerieslist.data.local.BreweriesLocalDataSource
 import com.march.brewerieslist.data.remote.BreweriesRemoteDataSource
 import dagger.Module
 import dagger.Provides
-import javax.inject.Inject
+import javax.inject.Singleton
 
 @Module
 class DataSourceModule {
 
     private var TABLE_NAME = "Breweries.db"
 
+    @Singleton
     @Provides
-    fun provideBreweriesLocalDataSource(breweriesDao: BreweriesDao):
-            BreweriesLocalDataSource {
-        return BreweriesLocalDataSource(breweriesDao)
-    }
-
-    @Provides
-    fun provideBreweriesRemoteDataSource(apiService: BreweriesApiService):
-            BreweriesRemoteDataSource {
-        return BreweriesRemoteDataSource(apiService)
-    }
-
-    //TODO: Need fix providing of context
-    @Provides
-    fun provideBreweriesDatabase(): BreweriesDatabase {
-        return Room.databaseBuilder(App.INSTANCE, BreweriesDatabase::class.java, TABLE_NAME)
+    fun provideBreweriesDatabase(context: App): BreweriesDatabase {
+        return Room
+            .databaseBuilder(context, BreweriesDatabase::class.java, TABLE_NAME)
             .build()
     }
 
+    @Singleton
     @Provides
     fun providesBreweriesDao(database: BreweriesDatabase): BreweriesDao {
         return database.breweriesDao()
     }
 
+    @Singleton
+    @Provides
+    fun provideBreweriesLocalDataSource(breweriesDao: BreweriesDao): BreweriesLocalDataSource {
+        return BreweriesLocalDataSource(breweriesDao)
+    }
+
+    @Singleton
+    @Provides
+    fun provideBreweriesRemoteDataSource(apiService: BreweriesApiService): BreweriesRemoteDataSource {
+        return BreweriesRemoteDataSource(apiService)
+    }
+
+    @Singleton
     @Provides
     fun provideBreweriesRepository(
         localDataSource: BreweriesLocalDataSource,

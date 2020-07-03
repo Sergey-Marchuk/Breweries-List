@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <import type="com.march.brewerieslist.ui.list.BreweriesBindingAdapters" />
+
+        <variable
+            name="viewModel"
+            type="com.march.brewerieslist.ui.list.BreweriesListViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/header_layout"/>
+
+        <View
+            android:id="@+id/dividerView"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_divider_dark_green"
+            app:layout_constraintTop_toBottomOf="@id/headerTV" />
+
+        <com.march.brewerieslist.ui.list.SearchView
+            android:id="@+id/searchSV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/dividerView"/>
+
+        <ImageView
+            android:layout_width="@dimen/breweries_list_leprechaun_width"
+            android:layout_height="@dimen/breweries_list_leprechaun_height"
+            android:src="@drawable/ic_leprechaun"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshSRL"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:showProgress="@{viewModel.showProgress}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchSV">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/breweriesRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:breweries="@{viewModel.breweries}"
+                tools:listitem="@layout/item_brewery" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

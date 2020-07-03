@@ -1,7 +1,8 @@
-package com.march.brewerieslist
+package com.march.brewerieslist.ui
 
 import android.os.Bundle
-import com.march.brewerieslist.ui.BreweriesListFragment
+import com.march.brewerieslist.R
+import com.march.brewerieslist.ui.list.BreweriesListFragment
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity() {
@@ -14,7 +15,9 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private fun launchBreweriesListScreen() {
         supportFragmentManager.beginTransaction()
-            .add(android.R.id.content, BreweriesListFragment())
+            .add(android.R.id.content,
+                BreweriesListFragment()
+            )
             .commit()
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:id="@+id/headerTV"
+    android:layout_width="match_parent"
+    android:layout_height="?android:actionBarSize"
+    android:background="@color/color_light_green"
+    android:fontFamily="@font/iowan_old_style_roman"
+    android:gravity="center"
+    android:text="@string/breweries"
+    android:textColor="@android:color/white"
+    android:textSize="@dimen/breweries_list_title_text_size"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" />

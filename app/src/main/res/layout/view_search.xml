@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:id="@+id/searchContainerFL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/breweries_list_search_padding"
+    android:background="@color/color_light_green"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditText
+        android:id="@+id/searchET"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/breweries_list_search_height"
+        android:gravity="center"
+        android:singleLine="true"
+        android:inputType="textCapSentences"
+        android:fontFamily="@font/sf_ui_text_regular"
+        android:paddingStart="@dimen/brewery_item_horizontal_padding"
+        android:paddingEnd="@dimen/brewery_item_horizontal_padding"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bg_search" />
+
+    <TextView
+        android:id="@+id/hintTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/searchET"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/color_search_grey"
+        android:fontFamily="@font/sf_ui_text_regular"
+        android:drawableStart="@drawable/ic_search"
+        android:text="@string/search"/>
+
+</merge>

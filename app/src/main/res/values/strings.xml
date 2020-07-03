@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Breweries List</string>
+    <string name="breweries">Breweries</string>
+    <string name="country_format">Country: %s</string>
+    <string name="state_format">State: %s</string>
+    <string name="city_format">City: %s</string>
+    <string name="street_format">Street: %s</string>
+    <string name="postal_code_format">Postal Code: %s</string>
+    <string name="phone_format">Phone: %s</string>
+    <string name="website_format">Website: <u>%s</u></string>
+    <string name="show_on_map">Show on map</string>
+    <string name="search">Search</string>
 </resources>
